@@ -1,0 +1,87 @@
+.customer-operation {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.customer-operation>li {
+    padding: 2px 15px 2px 5px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.filter {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+}
+
+mat-figure {
+    top: 5px!important;
+}
+
+mat-card-header {
+    background: #0a69f8;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-grid-tile {
+    background: #fff;
+    border-radius: 4px;
+}
+
+mat-card {
+    width: 300px;
+    box-shadow: 0 2px 1px -1px rgba(13, 12, 12, 0.43), 0 1px 1px 0 rgba(0, 0, 0, 0.74), 0 1px 3px 0 rgba(0, 0, 0, 0.83)!important;
+    margin-bottom: 15px;
+    padding: 0px!important;
+}
+
+mat-card-content {
+    display: flex;
+    padding: 5px 5px 25px 5px;
+}
+
+mat-card-content .avatarImage {
+    flex: 0 0 22%;
+    margin-right: 15px;
+}
+
+mat-card-content .avatarImage img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.user-details p {
+    margin-bottom: 5px;
+}
+
+.mat-card-header .mat-card-header-text .mat-card-title {
+    margin-left: 0px!important;
+}
+
+.mat-card-header .mat-card-title {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.mat-card-header .glyphicon {
+    color: #fff;
+    font-size: 25px;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+td img {
+    width: 80px;
+    height: 80px;
+}

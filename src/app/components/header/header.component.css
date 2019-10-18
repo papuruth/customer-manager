@@ -1,0 +1,36 @@
+.navbar {
+    border-radius: 0px;
+}
+
+/* .top {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+} */
+
+.button_style {
+    cursor: pointer;
+}
+
+.navbar-inverse {
+    background: #0a69f8;
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #0a69f8;
+}
+
+.navbar-brand {
+    color: #fff;
+    float: left;
+    height: 50px;
+    padding: 11px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.navbar-nav>li>a {
+    color: #fff
+}

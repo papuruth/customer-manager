@@ -1,0 +1,99 @@
+<h1>Customers</h1>
+<ul class="customer-operation">
+  <li id="cardsView" (click)="viewChanger($event)">Cards</li>
+  <li id="listView" (click)="viewChanger($event)">List</li>
+  <li id="mapView" (click)="viewChanger($event)">Map</li>
+  <li id="addCustomerView" (click)="addCustomer($event)">New Customer</li>
+</ul>
+<div class="filter">
+  <p>Filter</p>
+  <input type="text" (keyup)="onKey($event)" autocomplete="filter-cards" />
+</div>
+
+<ng-container>
+  <div *ngIf="showCards">
+    <mat-grid-list [cols]="breakpoint" rowHeight="3:2" (window:resize)="onResize($event)" [gutterSize]="'10px'">
+      <mat-grid-tile *ngFor="let items of pagedList">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{items.first_name}} {{items.last_name}}</mat-card-title>
+            <a><span class="glyphicon glyphicon-edit"></span></a>
+          </mat-card-header>
+          <mat-card-content>
+            <div mat-card-avatar class="avatarImage">
+              <img *ngIf="items.gender === 'Male'" src="../../assets/images/male.png" alt="male" />
+              <img *ngIf="items.gender === 'Female'" src="../../assets/images/female.png" alt="female" />
+            </div>
+            <div class="user-details">
+              <p>{{items.city}},</p>
+              <p>{{items.state}}</p>
+              <a [routerLink]="['/orders']">View Orders</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-paginator [length]="length" [pageSize]="pageSize" (page)="pageEvent = OnPageChange($event)">
+    </mat-paginator>
+  </div>
+  <div *ngIf="showList" class="mat-elevation-z8">
+    <table mat-table [dataSource]="listItem" matSort (matSortChange)="sortColumn($event)">
+      <!-- Image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <img *ngIf="element.gender === 'Male'" src="../../assets/images/male.png" alt="male" />
+          <img *ngIf="element.gender === 'Female'" src="../../assets/images/female.png" alt="female" />
+        </td>
+      </ng-container>
+
+      <!-- First Name Column -->
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+      </ng-container>
+
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <!-- Orders Column -->
+      <ng-container matColumnDef="orders_total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Total</th>
+        <td mat-cell *matCellDef="let element"> {{element.orders_total}} </td>
+      </ng-container>
+
+      <!-- Orders Link Column -->
+      <ng-container matColumnDef="orders_link">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let element"><a [routerLink]="['/routePath']">View Orders</a>   </td>
+        </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="resultLength" [pageSize]="5" showFirstLastButtons
+      (page)="pageEvent = ListingPageChange($event)"></mat-paginator>
+  </div>
+</ng-container>
