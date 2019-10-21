@@ -1,9 +1,10 @@
-<h1>Customers</h1>
+<h1><span class="glyphicon glyphicon-user"></span> Customers</h1>
 <ul class="customer-operation">
-  <li id="cardsView" (click)="viewChanger($event)">Cards</li>
-  <li id="listView" (click)="viewChanger($event)">List</li>
-  <li id="mapView" (click)="viewChanger($event)">Map</li>
-  <li id="addCustomerView" (click)="addCustomer($event)">New Customer</li>
+  <li id="cardsView" (click)="viewChanger($event)"><span class="glyphicon glyphicon-th-large"></span> Cards</li>
+  <li id="listView" (click)="viewChanger($event)"><span class="glyphicon glyphicon-list"></span> List</li>
+  <li id="mapView" (click)="viewChanger($event)"><span class="glyphicon glyphicon-map-marker"></span> Map</li>
+  <li id="addCustomerView" (click)="addCustomer($event)"><span class="glyphicon glyphicon-plus"></span> New Customer
+  </li>
 </ul>
 <div class="filter">
   <p>Filter</p>
@@ -27,14 +28,14 @@
             <div class="user-details">
               <p>{{items.city}},</p>
               <p>{{items.state}}</p>
-              <a [routerLink]="['/orders']">View Orders</a>
+              <a (click)="navigateToOrder(items.id)">View Orders</a>
             </div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
 
-    <mat-paginator [length]="length" [pageSize]="pageSize" (page)="pageEvent = OnPageChange($event)">
+    <mat-paginator [length]="length" [pageSize]="pageSize" (page)="pageEvent = OnPageChange($event)" showFirstLastButtons>
     </mat-paginator>
   </div>
   <div *ngIf="showList" class="mat-elevation-z8">
@@ -86,14 +87,184 @@
 
       <!-- Orders Link Column -->
       <ng-container matColumnDef="orders_link">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-          <td mat-cell *matCellDef="let element"><a [routerLink]="['/routePath']">View Orders</a>   </td>
-        </ng-container>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="['/orders']">View Orders</a> </td>
+      </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [length]="resultLength" [pageSize]="5" showFirstLastButtons
       (page)="pageEvent = ListingPageChange($event)"></mat-paginator>
+  </div>
+
+  <div *ngIf="addCustomerView" class="signup">
+    <form [formGroup]="addCustomerForm" (ngSubmit)="saveCustomer()" class="form-horizontal">
+      <!--saveCustomer is the callback function, emits an ngSubmit event to a callback function -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add Customer!</h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="first_name">First Name</label>
+            <div class="col-sm-10">
+              <input id="first_name" formControlName="first_name" type="text" class="form-control"
+                autocomplete="first_name" placeholder="Mark">
+              <span class="help-block" *ngIf="addCustomerForm.get('first_name').errors &&
+                     ( addCustomerForm.get('first_name').touched ||addCustomerForm.get('first_name').dirty)">
+                <span *ngIf="addCustomerForm.get('first_name').errors.required">
+                  First Name is required
+                </span>
+                <span *ngIf="addCustomerForm.get('first_name').errors.pattern">
+                  Blank & number not allowed
+                </span><br />
+                <span
+                  *ngIf="addCustomerForm.get('first_name').errors.minlength || addCustomerForm.get('first_name').errors.maxlength">
+                  First Name must be greater than 4 characters and less than 15 characters
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="last_name">Last Name</label>
+            <div class="col-sm-10">
+              <input id="last_name" formControlName="last_name" type="text" class="form-control"
+                autocomplete="last_name" placeholder="Henry">
+              <span class="help-block" *ngIf="addCustomerForm.get('last_name').errors &&
+                     ( addCustomerForm.get('last_name').touched ||addCustomerForm.get('last_name').dirty)">
+                <span *ngIf="addCustomerForm.get('last_name').errors.required">
+                  Last Name is required
+                </span><br />
+                <span *ngIf="addCustomerForm.get('last_name').errors.pattern">
+                  Blank & number not allowed
+                </span><br />
+                <span
+                  *ngIf="addCustomerForm.get('last_name').errors.minlength || addCustomerForm.get('last_name').errors.maxlength">
+                  Last Name must be greater than 4 characters and less than 15 characters
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="address">Address</label>
+            <div class="col-sm-10">
+              <input id="address" formControlName="address" type="text" class="form-control" autocomplete="address"
+                placeholder="61 Park Street, Camden, ME, 04843, US">
+              <div *ngIf="fieldValues.address.invalid && (fieldValues.address.dirty || fieldValues.address.touched)"
+                class="help-block">
+                <div *ngIf="fieldValues.address.errors.required">Address is required.</div>
+                <div *ngIf="fieldValues.address.errors.minlength">Minimum length 10 characters</div>
+                <div *ngIf="fieldValues.address.errors.maxlength">Maximum length 50 characters.</div>
+                <div *ngIf="addCustomerForm.get('address').hasError('pattern')" class="help-block">
+                  <span>Address not valid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="pass">City</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="city" formControlName="city" type="text" autocomplete="city"
+                placeholder="Miami">
+              <span class="help-block" *ngIf="addCustomerForm.get('city').errors &&
+                     ( addCustomerForm.get('city').touched ||addCustomerForm.get('city').dirty)">
+                <span *ngIf="addCustomerForm.get('city').errors.required">
+                  City is required
+                </span><br />
+                <span *ngIf="addCustomerForm.get('city').errors.pattern">
+                  City name not valid
+                </span><br />
+                <span
+                  *ngIf="addCustomerForm.get('city').errors.minlength || addCustomerForm.get('city').errors.maxlength">
+                  City must be greater than 4 characters and less than 15 characters
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="pass">State</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="state" formControlName="state" type="text" autocomplete="state"
+                placeholder="Miami">
+              <span class="help-block" *ngIf="addCustomerForm.get('state').errors &&
+                     ( addCustomerForm.get('state').touched ||addCustomerForm.get('state').dirty)">
+                <span *ngIf="addCustomerForm.get('state').errors.required">
+                  State is required
+                </span><br />
+                <span *ngIf="addCustomerForm.get('state').errors.pattern">
+                  State name not valid
+                </span><br />
+                <span
+                  *ngIf="addCustomerForm.get('state').errors.minlength || addCustomerForm.get('state').errors.maxlength">
+                  State must be greater than 4 characters and less than 15 characters
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label gender">Gender</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input id="male" type="radio" value="Male" formControlName="gender">Male
+              </label>
+
+              <label class="radio-inline">
+                <input id="female" type="radio" value="Female" formControlName="gender">Female
+              </label>
+
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label class="col-sm-2 control-label gender">Orders Items</label>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Shoes $10.00" formControlName="shoes">
+                <label class="form-check-label" for="shoes">
+                  Shoes $10.00
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Piano $200.00" formControlName="piano">
+                <label class="form-check-label" for="piano">
+                  Piano $200.00
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Monitor $300.00" formControlName="monitor">
+                <label class="form-check-label" for="monitor">
+                  Monitor $300.00
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="KeyBoard $50.00" formControlName="keyboard">
+                <label class="form-check-label" for="keyboard">
+                  KeyBoard $50.00
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Books $100.00" formControlName="books">
+                <label class="form-check-label" for="books">
+                  Books $100.00
+                </label>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10">
+            <button class="btn btn-primary" type="submit" [disabled]="!addCustomerForm.valid"
+              style="align-content: center">Add
+              Customer</button>
+          </div>
+        </div>
+        <!--button disabled until form is valid-->
+      </div>
+    </form>
   </div>
 </ng-container>

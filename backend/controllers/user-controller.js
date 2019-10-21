@@ -12,7 +12,6 @@ exports.getUsers = function (req, res) {
         }
         readJson('../data/dummy_data_users.json', (err, data) => {
             if (!err) {
-                console.log(data);
                 res.json(data);
             } else {
                 throw new Error(err.message);
@@ -23,27 +22,34 @@ exports.getUsers = function (req, res) {
     }
 }
 
-exports.login = function (req,res) {
+exports.addUser = function (req, res) {
     console.log(req.body)
-    const {email, password} = req.body;
-    if (email === 'admin@admin.com' && password === 'Atom@199') {
-        res.status(200).json({
-            success: true,
-            userDetails: {
-                fullname: "admin",
-                email: email,
-                gender: "Male",
-                address: {
-                    city: 'Phoenix',
-                    state: 'Arizona',
-                    country: 'USA'
+    try {
+        var readJson = (path, callback) => {
+            fs.readFile(require.resolve(path), (err, data) => {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, JSON.parse(data));
                 }
+            });
+        }
+        readJson('../data/dummy_data_users.json', (err, data) => {
+            if (!err) {
+                data.push(req.body);
+                console.log(data)
+                fs.writeFile('data/dummy_data_users.json', JSON.stringify(data), (err, data) => {
+                    if(err) {
+                        throw new Error(err);
+                    } else {
+                        res.send(data);
+                    }
+                })
+            } else {
+                throw new Error(err.message);
             }
         });
-    } else {
-        res.status(401).json({
-            success: false,
-            userDetails: null
-        })
+    } catch (error) {
+        console.log(error.message);
     }
 }

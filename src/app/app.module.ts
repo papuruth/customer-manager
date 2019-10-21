@@ -15,8 +15,6 @@ import { AppComponent } from './app.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrdersDetailsComponent } from './components/orders-details/orders-details.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserService } from './services/user.service';
 @NgModule({
@@ -25,8 +23,6 @@ import { UserService } from './services/user.service';
     OrdersComponent,
     OrdersDetailsComponent,
     HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
     UsersComponent,
   ],
   imports: [
