@@ -104,26 +104,45 @@ export class UsersComponent implements OnInit {
 
   onKey(event: any) {
     const value = event.target.value;
-    this.listItem.filter = value.trim().toLowerCase();
+    if (this.showCards) {
+      if (value.length > 3) {
+        const filteredCustomer = this.usersList.filter(o => {
+          return Object.keys(o).some(k => value.includes(o[k]));
+        });
+        this.pagedList = filteredCustomer;
+      } else {
+        this.pagedList = this.usersList.slice(0, 10);
+      }
+    } else {
+      this.listItem.filter = value.trim().toLowerCase();
+    }
   }
 
   viewChanger(event: any) {
     const id = event.target.id;
-    console.log(id);
     if (id === 'cardsView') {
+      document.getElementById('addCustomerView').style.color = '';
+      document.getElementById('listView').style.color = '';
+      document.getElementById(id).style.color = 'black';
       this.showList = false;
       this.addCustomerView = false;
       this.showCards = true;
     }
 
     if (id === 'listView') {
+      document.getElementById('cardsView').style.color = '';
+      document.getElementById('addCustomerView').style.color = '';
+      document.getElementById(id).style.color = 'black';
       this.showCards = false;
       this.addCustomerView = false;
       this.showList = true;
     }
   }
 
-  addCustomer(event: any) {
+  addCustomer() {
+    document.getElementById('cardsView').style.color = '';
+    document.getElementById('listView').style.color = '';
+    document.getElementById('addCustomerView').style.color = 'black';
     this.showList = false;
     this.showCards = false;
     this.addCustomerView = true;
@@ -139,24 +158,31 @@ export class UsersComponent implements OnInit {
     if (this.addCustomerForm.invalid) {
       return;
     }
-    console.log('hello');
     this.loading = true;
     const { first_name, last_name, address, city, state, gender } = this.addCustomerForm.value;
     const id = this.usersList.length + 1;
     this.formData = { id, first_name, last_name, address, city, state, gender };
-    this.userService.addUser(this.formData)
-      .subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
+    this.userService.addUser(this.formData).subscribe((response: any) => {
+      console.log(response);
+      if (response.success) {
+        this.addCustomerForm.reset();
+        alert('User added successfgully');
+        this.usersList.push(this.formData);
+        this.length = this.usersList.length;
+        console.log(this.usersList);
+      }
+    },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   navigateToOrder(id: number): void {
-    console.log(id);
     const filteredUser = this.usersList.filter(ele => {
       return ele.id === id;
     });
-    // this.orderService.getOrdersData(id);
-    this.route.navigate(['orders'], { state: { example: filteredUser } });
+
+    this.route.navigate(['orders'], { state: { dataCustomer: filteredUser } });
   }
 }

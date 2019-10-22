@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { api } from '../config/index';
 import { Observable } from 'rxjs';
 import { IUser } from '../models/user.interface';
-import {catchError} from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +19,10 @@ export class UserService {
     return this.Http.get<IUser[]>(this.getUsersUrl);
   }
 
-  addUser(formData: IUser){
+  addUser(formData: IUser) {
     return this.Http.post<IUser[]>(this.saveUserUrl, formData)
       .pipe(
+        map(response => response),
         catchError(err => err.message)
       );
   }

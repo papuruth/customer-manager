@@ -1,55 +1,34 @@
 const fs = require('fs');
+
+// Reading the users data from file
+const bufferData = fs.readFileSync('data/dummy_data_users.json');
+const userData = JSON.parse(bufferData);
+
 exports.getUsers = function (req, res) {
-    try {
-        var readJson = (path, callback) => {
-            fs.readFile(require.resolve(path), (err, data) => {
-                if (err) {
-                    callback(err, null);
-                } else {
-                    callback(null, JSON.parse(data));
-                }
-            });
-        }
-        readJson('../data/dummy_data_users.json', (err, data) => {
-            if (!err) {
-                res.json(data);
-            } else {
-                throw new Error(err.message);
-            }
-        });
-    } catch (error) {
-        console.log(error.message);
-    }
+    res.status(200).send(userData);
 }
 
 exports.addUser = function (req, res) {
     console.log(req.body)
     try {
-        var readJson = (path, callback) => {
-            fs.readFile(require.resolve(path), (err, data) => {
-                if (err) {
-                    callback(err, null);
-                } else {
-                    callback(null, JSON.parse(data));
-                }
-            });
-        }
-        readJson('../data/dummy_data_users.json', (err, data) => {
-            if (!err) {
-                data.push(req.body);
-                console.log(data)
-                fs.writeFile('data/dummy_data_users.json', JSON.stringify(data), (err, data) => {
-                    if(err) {
-                        throw new Error(err);
-                    } else {
-                        res.send(data);
-                    }
-                })
+        let tempData = userData;
+        tempData.push(req.body);
+        console.log(tempData)
+        fs.writeFile('data/dummy_data_users.json', JSON.stringify(tempData), (err, data) => {
+            if (err) {
+                throw new Error(err);
             } else {
-                throw new Error(err.message);
+                res.status(201).send({
+                    success: true,
+                    message: 'User added successfully'
+                });
             }
         });
     } catch (error) {
         console.log(error.message);
+        res.status(400).send({
+            success: false,
+            message: error.message
+        })
     }
 }

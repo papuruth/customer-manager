@@ -34,7 +34,11 @@
                 "amount": "$153.38"
             }
         ],
-        "orders_total": "$455.37"
+        "orders_total": "$455.37",
+        "location": {
+            "lat": "32.7714",
+            "lon": "-97.2915"
+        }
     },
     {
         "id": 2,
@@ -71,7 +75,11 @@
                 "amount": "$120.57"
             }
         ],
-        "orders_total": "$457.97"
+        "orders_total": "$457.97",
+        "location": {
+            "lat": "35.4015",
+            "lon": "-101.8951"
+        }
     },
     {
         "id": 3,
@@ -108,7 +116,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$227.82"
+        "orders_total": "$227.82",
+        "location": {
+            "lat": "40.251",
+            "lon": "-74.7627"
+        }
     },
     {
         "id": 4,
@@ -130,7 +142,11 @@
                 "amount": "$27.36"
             }
         ],
-        "orders_total": "$137.45"
+        "orders_total": "$137.45",
+        "location": {
+            "lat": "41.0456",
+            "lon": "-85.3058"
+        }
     },
     {
         "id": 5,
@@ -152,7 +168,11 @@
                 "amount": "$33.91"
             }
         ],
-        "orders_total": "$164.54"
+        "orders_total": "$164.54",
+        "location": {
+            "lat": "34.1069",
+            "lon": "-117.2975"
+        }
     },
     {
         "id": 6,
@@ -174,7 +194,11 @@
                 "amount": "$120.35"
             }
         ],
-        "orders_total": "$273.73"
+        "orders_total": "$273.73",
+        "location": {
+            "lat": "61.1089",
+            "lon": "-149.4403"
+        }
     },
     {
         "id": 7,
@@ -196,7 +220,11 @@
                 "amount": "$70.44"
             }
         ],
-        "orders_total": "$101.16"
+        "orders_total": "$101.16",
+        "location": {
+            "lat": "39.2692",
+            "lon": "-84.3307"
+        }
     },
     {
         "id": 8,
@@ -218,7 +246,11 @@
                 "amount": "$120.57"
             }
         ],
-        "orders_total": "$236.47"
+        "orders_total": "$236.47",
+        "location": {
+            "lat": "37.1894",
+            "lon": "-121.7053"
+        }
     },
     {
         "id": 9,
@@ -240,7 +272,11 @@
                 "amount": "$17.38"
             }
         ],
-        "orders_total": "$74.73"
+        "orders_total": "$74.73",
+        "location": {
+            "lat": "36.5799",
+            "lon": "-82.5733"
+        }
     },
     {
         "id": 10,
@@ -267,7 +303,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$153.09"
+        "orders_total": "$153.09",
+        "location": {
+            "lat": "28.5663",
+            "lon": "-81.2608"
+        }
     },
     {
         "id": 11,
@@ -294,7 +334,11 @@
                 "amount": "$130.63"
             }
         ],
-        "orders_total": "$268.08"
+        "orders_total": "$268.08",
+        "location": {
+            "lat": "41.6857",
+            "lon": "-81.6728"
+        }
     },
     {
         "id": 12,
@@ -321,7 +365,11 @@
                 "amount": "$120.35"
             }
         ],
-        "orders_total": "$307.64"
+        "orders_total": "$307.64",
+        "location": {
+            "lat": "38.4134",
+            "lon": "-82.2774"
+        }
     },
     {
         "id": 13,
@@ -348,7 +396,11 @@
                 "amount": "$115.90"
             }
         ],
-        "orders_total": "$217.06"
+        "orders_total": "$217.06",
+        "location": {
+            "lat": "42.7684",
+            "lon": "-78.8871"
+        }
     },
     {
         "id": 14,
@@ -375,7 +427,11 @@
                 "amount": "$17.38"
             }
         ],
-        "orders_total": "$195.30"
+        "orders_total": "$195.30",
+        "location": {
+            "lat": "37.7509",
+            "lon": "-122.4153"
+        }
     },
     {
         "id": 15,
@@ -402,7 +458,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$153.09"
+        "orders_total": "$153.09",
+        "location": {
+            "lat": "35.26",
+            "lon": "-80.8042"
+        }
     },
     {
         "id": 16,
@@ -429,7 +489,11 @@
                 "amount": "$115.90"
             }
         ],
-        "orders_total": "$217.06"
+        "orders_total": "$217.06",
+        "location": {
+            "lat": "41.6857",
+            "lon": "-81.6728"
+        }
     },
     {
         "id": 17,
@@ -456,7 +520,11 @@
                 "amount": "$13.46"
             }
         ],
-        "orders_total": "$88.19"
+        "orders_total": "$88.19",
+        "location": {
+            "lat": "39.1668",
+            "lon": "-84.5382"
+        }
     },
     {
         "id": 18,
@@ -478,7 +546,11 @@
                 "amount": "$130.63"
             }
         ],
-        "orders_total": "$157.99"
+        "orders_total": "$157.99",
+        "location": {
+            "lat": "42.5032",
+            "lon": "-96.3829"
+        }
     },
     {
         "id": 19,
@@ -500,7 +572,11 @@
                 "amount": "$120.35"
             }
         ],
-        "orders_total": "$273.73"
+        "orders_total": "$273.73",
+        "location": {
+            "lat": "41.3657",
+            "lon": "-72.9275"
+        }
     },
     {
         "id": 20,
@@ -527,7 +603,11 @@
                 "amount": "$17.38"
             }
         ],
-        "orders_total": "$195.30"
+        "orders_total": "$195.30",
+        "location": {
+            "lat": "39.1678",
+            "lon": "-119.7764"
+        }
     },
     {
         "id": 21,
@@ -549,7 +629,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$139.63"
+        "orders_total": "$139.63",
+        "location": {
+            "lat": "39.0706",
+            "lon": "-84.4179"
+        }
     },
     {
         "id": 22,
@@ -576,7 +660,11 @@
                 "amount": "$130.63"
             }
         ],
-        "orders_total": "$268.08"
+        "orders_total": "$268.08",
+        "location": {
+            "lat": "39.5387",
+            "lon": "-119.8225"
+        }
     },
     {
         "id": 23,
@@ -598,7 +686,11 @@
                 "amount": "$120.35"
             }
         ],
-        "orders_total": "$273.73"
+        "orders_total": "$273.73",
+        "location": {
+            "lat": "43.0982",
+            "lon": "-89.3242"
+        }
     },
     {
         "id": 24,
@@ -625,7 +717,11 @@
                 "amount": "$57.35"
             }
         ],
-        "orders_total": "$293.82"
+        "orders_total": "$293.82",
+        "location": {
+            "lat": "38.8933",
+            "lon": "-77.0146"
+        }
     },
     {
         "id": 25,
@@ -652,7 +748,11 @@
                 "amount": "$57.35"
             }
         ],
-        "orders_total": "$293.82"
+        "orders_total": "$293.82",
+        "location": {
+            "lat": "27.9865",
+            "lon": "-82.0139"
+        }
     },
     {
         "id": 26,
@@ -684,7 +784,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$170.47"
+        "orders_total": "$170.47",
+        "location": {
+            "lat": "31.6948",
+            "lon": "-106.3"
+        }
     },
     {
         "id": 27,
@@ -716,7 +820,11 @@
                 "amount": "$33.91"
             }
         ],
-        "orders_total": "$301.99"
+        "orders_total": "$301.99",
+        "location": {
+            "lat": "38.8247",
+            "lon": "-104.562"
+        }
     },
     {
         "id": 28,
@@ -748,7 +856,11 @@
                 "amount": "$115.90"
             }
         ],
-        "orders_total": "$337.40"
+        "orders_total": "$337.40",
+        "location": {
+            "lat": "35.2944",
+            "lon": "-118.9052"
+        }
     },
     {
         "id": 29,
@@ -775,7 +887,11 @@
                 "amount": "$13.46"
             }
         ],
-        "orders_total": "$88.19"
+        "orders_total": "$88.19",
+        "location": {
+            "lat": "43.0696",
+            "lon": "-89.4239"
+        }
     },
     {
         "id": 30,
@@ -797,7 +913,11 @@
                 "amount": "$10.37"
             }
         ],
-        "orders_total": "$139.63"
+        "orders_total": "$139.63",
+        "location": {
+            "lat": "40.4344",
+            "lon": "-80.0248"
+        }
     },
     {
         "id": 31,
@@ -806,6 +926,19 @@
         "address": "61 Park Street",
         "city": "Gurugram",
         "state": "Haryana",
-        "gender": "Male"
+        "gender": "Male",
+        "location": {
+            "lat": 28.508669599999998,
+            "lon": 77.0922279
+        }
+    },
+    {
+        "id": 32,
+        "first_name": "Deeksha",
+        "last_name": "Singh",
+        "address": "Sector 21, Grugram",
+        "city": "Gurugram",
+        "state": "Haryana",
+        "gender": "Female"
     }
 ]

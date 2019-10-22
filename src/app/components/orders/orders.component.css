@@ -1,0 +1,59 @@
+.customer-operation {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.customer-operation>li {
+    padding: 2px 15px 2px 5px;
+    font-size: 17px;
+    color: gray;
+    font-weight: bold;
+}
+
+.active {
+    color: aliceblue;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 4px solid #000;
+}
+
+.badge {
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    float: right;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: none;
+}
+
+.list-group-item:nth-child(odd) {
+    background: rgba(174, 125, 125, 0.18);
+}
+
+.map {
+    height: 500px;
+    width: 100%;
+}
+
+.avatarImage img {
+    width: 100%;
+    max-width: 80px;
+}
+
+.customer-details {
+    display: flex;
+}
+
+.user-details {
+    margin-left: 20px;
+}

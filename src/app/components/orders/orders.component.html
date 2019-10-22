@@ -1,3 +1,38 @@
-<div style="margin-top:100px;">
-      {{user | json}}
-</div>
+<h1><span class="glyphicon glyphicon-user"></span> Customers Information</h1>
+<ul class="customer-operation">
+  <li id="customerDetailsView" (click)="viewChanger($event)"><span class="glyphicon glyphicon-list"></span> Customer
+    Details</li>
+  <li id="customerOrdersView" (click)="viewChanger($event)" style="color: black;"><span
+      class="glyphicon glyphicon-tags"></span> Customer
+    Orders</li>
+  <li id="editCustomerView"><span class="glyphicon glyphicon-edit"></span> Edit Customer
+  </li>
+</ul>
+
+<ng-container>
+  <div *ngIf="customerDetailsView" class="customer-details">
+    <div mat-card-avatar class="avatarImage">
+      <img *ngIf="customerData.gender === 'Male'" src="../../assets/images/male.png" alt="male" />
+      <img *ngIf="customerData.gender === 'Female'" src="../../assets/images/female.png" alt="female" />
+    </div>
+    <div class="user-details">
+      <p>{{customerData.address}}</p>
+      <p>{{customerData.city}},</p>
+      <p>{{customerData.state}}</p>
+    </div>
+  </div>
+  <div *ngIf="customerOrdersView">
+    <h3>Orders for {{customerData.first_name}} {{customerData.last_name}}</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let orders of customerData.orders">
+        {{orders.order_name}}
+        <span class="badge">
+          {{orders.amount}}
+        </span>
+      </li>
+    </ul>
+    <hr />
+    <span class="badge">{{customerData.orders_total}}</span>
+  </div>
+  <div id="map" class="map"></div>
+</ng-container>
