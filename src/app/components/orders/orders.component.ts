@@ -62,7 +62,7 @@ export class OrdersComponent implements OnInit {
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat([this.lon, this.lat]),
-        zoom: 8
+        zoom: 15
       })
     });
     document.getElementById('map').style.display = 'none';

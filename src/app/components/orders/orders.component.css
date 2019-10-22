@@ -57,3 +57,7 @@ hr {
 .user-details {
     margin-left: 20px;
 }
+
+.user-details p:first-child{
+    font-weight: bold;;
+}

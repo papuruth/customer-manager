@@ -17,6 +17,10 @@
     right: 20px;
 }
 
+.filter p {
+    margin: 0px;
+}
+
 mat-figure {
     top: 5px!important;
 }

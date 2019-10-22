@@ -16,6 +16,7 @@
       <img *ngIf="customerData.gender === 'Female'" src="../../assets/images/female.png" alt="female" />
     </div>
     <div class="user-details">
+      <p>{{customerData.first_name}} {{customerData.last_name}}</p>
       <p>{{customerData.address}}</p>
       <p>{{customerData.city}},</p>
       <p>{{customerData.state}}</p>
@@ -31,6 +32,7 @@
         </span>
       </li>
     </ul>
+    <h3 *ngIf="!customerData.orders">No orders ☹</h3>
     <hr />
     <span class="badge">{{customerData.orders_total}}</span>
   </div>

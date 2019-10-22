@@ -105,9 +105,11 @@ export class UsersComponent implements OnInit {
   onKey(event: any) {
     const value = event.target.value;
     if (this.showCards) {
-      if (value.length > 3) {
-        const filteredCustomer = this.usersList.filter(o => {
-          return Object.keys(o).some(k => value.includes(o[k]));
+      if (value.length > 3 && isNaN(value)) {
+        const filteredCustomer = this.usersList.filter(item => {
+          const itemToString = JSON.stringify(item).toLowerCase();
+          const itemParsed = JSON.parse(itemToString);
+          return Object.keys(itemParsed).some(key => value.toLowerCase().includes(itemParsed[key]));
         });
         this.pagedList = filteredCustomer;
       } else {
