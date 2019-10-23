@@ -71,7 +71,7 @@ export class OrdersComponent implements OnInit {
   viewChanger(event: any) {
     const id = event.target.id;
     if (id === 'customerDetailsView') {
-      document.getElementById('map').style.display = 'block';
+      document.getElementById('map').style.display = 'inline-block';
       document.getElementById(id).style.color = '#000';
       document.getElementById('customerOrdersView').style.color = '';
       this.customerOrdersView = false;
