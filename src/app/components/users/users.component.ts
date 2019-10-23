@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/models/user.interface';
 import { OrdersComponent } from '../orders/orders.component';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-users',
@@ -105,7 +106,7 @@ export class UsersComponent implements OnInit {
   onKey(event: any) {
     const value = event.target.value;
     if (this.showCards) {
-      if (value.length > 3 && isNaN(value)) {
+      if (value.length > 0 && isNaN(value)) {
         const filteredCustomer = this.usersList.filter(item => {
           const itemToString = JSON.stringify(item).toLowerCase();
           const itemParsed = JSON.parse(itemToString);
