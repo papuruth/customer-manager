@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
   // MatPaginator Inputs
   length = 0;
   page: PageEvent;
-  pageSize = 10;
+  pageSize = 8;
   resultLength = 0;
 
   // Table Heading
@@ -49,11 +49,11 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 800) ? 1 : 4;
+    this.breakpoint = (window.innerWidth <= 800) ? 2 : 4;
     this.userService.getUsers().subscribe(data => {
       this.usersList = data;
       console.log(data);
-      this.pagedList = this.usersList.slice(0, 10);
+      this.pagedList = this.usersList.slice(0, 8);
       this.listItem = new MatTableDataSource(this.usersList.slice(0, 5));
       this.length = this.usersList.length;
       this.resultLength = this.usersList.length;
@@ -100,7 +100,16 @@ export class UsersComponent implements OnInit {
   }
 
   onResize(event: any) { // to adjust to screen size
-    this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 4;
+    if (event.target.innerWidth <= 500) {
+      this.breakpoint = 1;
+    } else if (event.target.innerWidth <= 900) {
+      this.breakpoint = 2;
+    } else if (event.target.innerWidth <= 1045) {
+      this.breakpoint = 3;
+    } else {
+      this.breakpoint = 4;
+    }
+
   }
 
   onKey(event: any) {

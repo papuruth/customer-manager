@@ -9,12 +9,12 @@ exports.getUsers = function (req, res) {
 }
 
 exports.addUser = function (req, res) {
-    console.log(req.body)
     try {
-        let tempData = userData;
-        tempData.push(req.body);
-        console.log(tempData)
-        fs.writeFile('data/dummy_data_users.json', JSON.stringify(tempData), (err, data) => {
+        // if(req.body !== null) {
+        //     throw new Error('Data required to add user');
+        // }
+        userData.push(req.body);
+        fs.writeFile('data/dummy_data_users.json', JSON.stringify(userData), (err, data) => {
             if (err) {
                 throw new Error(err);
             } else {
